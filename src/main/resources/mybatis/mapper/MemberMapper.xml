@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="doubledown.newsservice.dao.MemberDAO">
+    <insert id="save" parameterType="doubledown.newsservice.dto.MemberDTO">
+        INSERT INTO TBL_MEMBER(
+            LOGINID,
+            PASSWORD,
+            NAME
+        )
+        VALUES(
+            #{loginId},
+            #{password},
+            #{name}
+        )
+    </insert>
+
+    <select id="findByLoginId" resultType="doubledown.newsservice.dto.MemberDTO" parameterType="string">
+        SELECT MEMBERID
+               , LOGINID
+                , PASSWORD
+                , NAME
+        FROM TBL_MEMBER
+        WHERE LOGINID = #{loginId}
+    </select>
+
+    <select id="findById" resultType="doubledown.newsservice.dto.MemberDTO" parameterType="long">
+        SELECT MEMBERID
+             , LOGINID
+             , PASSWORD
+             , NAME
+        FROM TBL_MEMBER
+        WHERE LOGINID = #{memberId}
+    </select>
+
+</mapper>
