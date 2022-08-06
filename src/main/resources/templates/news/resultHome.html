@@ -15,8 +15,14 @@
   <div class="row">
     <div class="col">
       <button class="w-100 btn btn-secondary btn-lg" type="button"
-              th:onclick="|location.href='@{/news/setting}'|">
+              th:onclick="|location.href='@{/news/newsSettingForm}'|">
         설정 페이지
+      </button>
+    </div>
+    <div class="col">
+      <button class="w-100 btn btn-secondary btn-lg" type="button"
+              th:onclick="|location.href='@{/news/newsCollectResult}'|">
+        수집 기사 보기
       </button>
     </div>
     <div class="col">
