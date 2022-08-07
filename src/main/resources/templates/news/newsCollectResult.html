@@ -21,12 +21,16 @@
     </div>
   </div>
 
-  <hr class="my-4">
-  <div>
-    <table class="table">
+  <form action="" method="get">
+    <div>
+      <input type="text" id="keyword" name="keyword" th:value="${keyword}">
+      <button type="submit">검색</button>
+    </div>
+  </form>
+  <div class="table-responsive clearfix">
+    <table class="table table-hover">
       <thead>
       <tr>
-        <th>번호</th>
         <th>기사 제목</th>
         <th>기사 링크</th>
         <th>수집 사이트</th>
@@ -34,22 +38,29 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="item : ${items}">
-        <!--<td><a href="item.html" th:href="@{/items/{itemId}(itemId=${item.id})}" th:text="${item.id}">회원id</a></td>
-        <td><a href="item.html" th:href="@{|/items/${item.id}|}" th:text="${item.itemName}">상품명</a></td>
-        <td th:text="${item.price}">10000</td>
-        <td th:text="${item.quantity}">10</td>
-        <td th:text="${item.quantity}">10</td>-->
-        <td>회원id</td>
-        <td>상품명</td>
-        <td>10000</td>
-        <td>10</td>
-        <td>10</td>
+      <tr th:each="list : ${list.getList()}">
+        <td th:text="${list.getTitle()}"></td>
+        <td th:text="${list.getLink()}"></td>
+        <td th:text="${list.getSite()}"></td>
+        <td th:text="${list.getKeyword()}"></td>
       </tr>
       </tbody>
     </table>
   </div>
-
+  <!-- 페이징 -->
+  <nav>
+    <ul>
+      <li th:classappend="${list.getPrePage() == 0} ? 'disabled'">
+        <a th:href="@{/news/newsCollectResult(pageNum=${list.getPrePage()}, keyword=${keyword})}">Previous</a>
+      </li>
+      <li th:each="page: ${#numbers.sequence(list.getNavigateFirstPage(), list.getNavigateLastPage())}" th:classappend="${page == list.getPageNum()} ? 'active'">
+        <a th:text="${page}" th:href="@{/news/newsCollectResult(pageNum=${page}, keyword=${keyword})}"></a>
+      </li>
+      <li th:classappend="${list.getNextPage() == 0} ? 'disabled'">
+        <a th:href="@{/news/newsCollectResult(pageNum=${list.getNextPage()}, keyword=${keyword})}">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div> <!-- /container -->
 
 </body>

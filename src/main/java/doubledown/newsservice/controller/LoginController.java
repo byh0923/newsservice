@@ -22,11 +22,17 @@ public class LoginController {
 
     private final LoginService loginService;
 
+    /**
+     * 로그인 화면으로 보내는 메서드
+     * */
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("loginForm")LoginForm form) {
         return "login/loginForm";
     }
 
+    /**
+     * 로그인 수행 로직 메서드 
+     * */
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute LoginForm form, BindingResult bindingResult, HttpServletRequest request) {
         if(bindingResult.hasErrors()) {
@@ -39,13 +45,15 @@ public class LoginController {
             return "login/loginForm";
         }
 
-        // 로그인 성공 처리
         HttpSession session = request.getSession();
         session.setAttribute("memberId", loginMember);
 
         return "redirect:/";
     }
 
+    /** 
+     * 로그아웃 수행 메서드
+     * */
     @PostMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);

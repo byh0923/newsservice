@@ -1,6 +1,5 @@
 package doubledown.newsservice.controller;
 
-import doubledown.newsservice.dao.MemberDAO;
 import doubledown.newsservice.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +13,9 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final MemberDAO memberDAO;
-
+    /** 
+     * 로그인 결과에 따라 home이나 수집 결과 창으로 가는 메서드
+     * */
     @GetMapping("/")
     public String homeLogin(@SessionAttribute(name = "memberId", required = false) MemberDTO loginMember, Model model) {
 

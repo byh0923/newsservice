@@ -19,11 +19,17 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    /** 
+     * 회원가입 폼으로 이동
+     * */
     @GetMapping("/add")
     public String addForm(@ModelAttribute MemberDTO member) {
         return "members/addMemberForm";
     }
 
+    /** 
+     * 회원 가입 메서드
+     * */
     @PostMapping("/add")
     public String save(@Valid @ModelAttribute MemberDTO member, BindingResult bindingResult) {
         if(bindingResult.hasFieldErrors()) {

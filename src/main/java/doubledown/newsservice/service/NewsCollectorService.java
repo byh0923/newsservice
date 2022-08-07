@@ -1,5 +1,7 @@
 package doubledown.newsservice.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import doubledown.newsservice.dao.NewsDAO;
 import doubledown.newsservice.dto.KeywordDTO;
 import doubledown.newsservice.dto.NewsDTO;
@@ -38,6 +40,11 @@ public class NewsCollectorService {
 
     public void deleteKeyword(String keyword) {
         newsDAO.deleteKeyword(keyword);
+    }
+
+    public Page<NewsDTO> getCollectNews(int pageNo, String keyword) {
+        PageHelper.startPage(pageNo, 10);
+        return newsDAO.allCollectNews(keyword);
     }
 
 }
