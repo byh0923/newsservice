@@ -52,5 +52,20 @@
         WHERE keywordName = #{keyword}
     </delete>
 
+    <select id="allCollectNews" resultType="doubledown.newsservice.dto.NewsDTO" parameterType="string">
+        SELECT title
+            ,originallink
+            ,link
+            ,description
+            ,pubDate
+            ,site
+            ,registerDate
+            ,keyword
+        FROM TBL_NEWS
+        <if test="keyword!=null and !keyword.equals('')">
+            WHERE keyword = #{keyword}
+        </if>
+    </select>
+
 
 </mapper>

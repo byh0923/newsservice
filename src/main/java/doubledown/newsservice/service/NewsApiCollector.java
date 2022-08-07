@@ -25,6 +25,10 @@ public class NewsApiCollector {
 
     private final String SITE_NAVER = "NAVER";
 
+    /**
+     * @param <<code>keyword</code>에 관련된 뉴스 정보 얻어오는 메서드입니다.
+     * @return <code>List<NewsDTO></code>뉴스 정보를 list로 가져옵니다.
+     * */
     public List<NewsDTO> requestNews(String keyword) {
         String responseBody = "";
         NewsDTO newsResult = null;
