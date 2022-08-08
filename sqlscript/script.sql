@@ -8,9 +8,9 @@ CREATE TABLE `tbl_keywords` (
 
 CREATE TABLE `tbl_member` (
     `memberId` int NOT NULL AUTO_INCREMENT,
-    `loginId` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-    `password` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-    `name` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+    `loginId` varchar(12) NOT NULL,
+    `password` varchar(120) NOT NULL,
+    `name` varchar(5) NOT NULL,
     PRIMARY KEY (`memberId`)
 )
 
