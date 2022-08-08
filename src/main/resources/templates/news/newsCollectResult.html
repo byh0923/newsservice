@@ -31,9 +31,8 @@
     <table class="table table-hover">
       <thead>
       <tr>
-        <th>기사 제목</th>
-        <th>기사 링크</th>
-        <th>수집 사이트</th>
+        <th style="width: 30%">기사 제목</th>
+        <th style="width: 30%">기사 링크</th>
         <th>수집 키워드</th>
       </tr>
       </thead>
@@ -41,7 +40,6 @@
       <tr th:each="list : ${list.getList()}">
         <td th:text="${list.getTitle()}"></td>
         <td th:text="${list.getLink()}"></td>
-        <td th:text="${list.getSite()}"></td>
         <td th:text="${list.getKeyword()}"></td>
       </tr>
       </tbody>
